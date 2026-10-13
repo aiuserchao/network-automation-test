@@ -1,0 +1,5 @@
+{# interfaces: description + unit 0 inet address #}
+{% for intf in interfaces | default([]) %}
+set interfaces {{ intf.name }} description "{{ intf.description }}"
+set interfaces {{ intf.name }} unit 0 family inet address {{ intf.ip }}
+{% endfor %}

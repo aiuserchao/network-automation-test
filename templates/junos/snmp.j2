@@ -1,0 +1,7 @@
+{# snmp: read-only community + location/contact #}
+set snmp location "{{ snmp.location }}"
+set snmp contact "{{ snmp.contact }}"
+set snmp community {{ snmp.community }} authorization read-only
+{% for client in snmp.clients | default([]) %}
+set snmp community {{ snmp.community }} clients {{ client }}
+{% endfor %}
